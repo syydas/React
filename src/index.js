@@ -2,38 +2,31 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
-class LikeBtn extends Component {
-    static defaultProps = {
-        likedText: '取消',
-        unlikedText: '点赞'
-    }
+const users = [
+    { username: 'Jerry', age: 21, gender: 'male' },
+    { username: 'Tomy', age: 22, gender: 'male' },
+    { username: 'Lily', age: 19, gender: 'female' },
+    { username: 'Lucy', age: 20, gender: 'female' }
+]
 
-    constructor () {
-        super()
-        this.state = { isLiked: false }
-    }
-
-    handleClickOnLikeButton () {
-        this.setState({
-            isLiked: !this.state.isLiked
-        })
-    }
-
-    render () {
+class User extends Component {
+    render() {
+        const {user} = this.props
         return (
-            <button onClick={this.handleClickOnLikeButton.bind(this)}>
-                {this.state.isLiked
-                    ? this.props.likedText
-                    : this.props.unlikedText} 👍
-            </button>
+            <div>
+                <div>name: {user.username}</div>
+                <div>age: {user.age}</div>
+                <div>gender: {user.gender}</div>
+                <hr />
+            </div>
         )
     }
 }
 class Index extends Component {
     render () {
-        return (
+        return(
             <div>
-                <LikeBtn likedText = '已赞' unlikedText = '赞'/>
+                {users.map((user, i) => <User key = {i} user = {user} />)}
             </div>
         )
     }
