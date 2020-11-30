@@ -3,9 +3,13 @@ import ReactDOM from 'react-dom'
 import './index.css'
 
 class Title extends Component {
+    handleOnClick(word) {
+        console.log(this, word)
+    }
     render () {
         return (
-            <h1>This is a title.</h1>
+            //如果你想在事件函数当中使用当前的实例，你需要手动地将实例方法 bind 到当前实例上再传入给 React.js。
+            <h1 onClick={this.handleOnClick.bind(this, 'Hello')}>This is a title.</h1>
         )
     }
 }
