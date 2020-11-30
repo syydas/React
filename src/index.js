@@ -2,41 +2,23 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
-class Title extends Component {
-    render () {
-        return (
-            <h1>This is a title.</h1>
-        )
+class LikeBtn extends Component {
+    constructor() {
+        super()
+        this.state = { isLiked: false }
     }
-}
 
-class Header extends Component {
-    render () {
-        return (
-            <div>
-                <Title />
-                <h2>This is a header.</h2>
-            </div>
-        )
+    handleOnClick() {
+        this.setState({
+            isLiked: !this.state.isLiked
+        })
     }
-}
 
-class Main extends Component {
-    render () {
-        return (
-            <div>
-                <h2>This is main content.</h2>
-            </div>
-        )
-    }
-}
-
-class Footer extends Component {
-    render () {
-        return (
-            <div>
-                <h2>This is footer</h2>
-            </div>
+    render() {
+        return(
+            <button onClick={ this.handleOnClick.bind(this)}>
+                {this.state.isLiked ? '取消' : '点赞'} 👍
+            </button>
         )
     }
 }
@@ -45,14 +27,11 @@ class Index extends Component {
     render () {
         return (
             <div>
-                <Header />
-                <Main />
-                <Footer />
+                <LikeBtn />
             </div>
         )
     }
 }
-
 
 ReactDOM.render(
     <Index />,
