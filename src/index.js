@@ -2,20 +2,59 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
+class Title extends Component {
+    render () {
+        return (
+            <h1>This is a title.</h1>
+        )
+    }
+}
+
 class Header extends Component {
     render () {
-        const isTrue = true
-        const real = <h1>I love you</h1>
-        const unreal = <h1>I don't love you</h1>
         return (
             <div>
-                {isTrue ? real : unreal}
+                <Title />
+                <h2>This is a header.</h2>
             </div>
         )
     }
 }
 
+class Main extends Component {
+    render () {
+        return (
+            <div>
+                <h2>This is main content.</h2>
+            </div>
+        )
+    }
+}
+
+class Footer extends Component {
+    render () {
+        return (
+            <div>
+                <h2>This is footer</h2>
+            </div>
+        )
+    }
+}
+
+class Index extends Component {
+    render () {
+        return (
+            <div>
+                <Header />
+                <Main />
+                <Footer />
+            </div>
+        )
+    }
+}
+
+
 ReactDOM.render(
-    <Header />,
+    <Index />,
     document.getElementById('root')
 )
